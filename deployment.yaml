@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywar-deployment
+  namespace: default
+  labels:
+    app: mywar-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mywar-app
+  template:
+    metadata:
+      labels:
+        app: mywar-app
+    spec:
+      containers:
+        - name: mywar-container
+          image: 383856007426.dkr.ecr.ap-south-1.amazonaws.com/mywar-app:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+      
