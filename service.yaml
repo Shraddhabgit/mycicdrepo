@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mywar-service
+  namespace: default
+  labels:
+    app: mywar-app
+spec:
+  type: LoadBalancer   # exposes service externally
+  selector:
+    app: mywar-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
